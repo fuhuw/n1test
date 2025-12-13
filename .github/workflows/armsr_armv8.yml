@@ -66,16 +66,7 @@ jobs:
         $GITHUB_WORKSPACE/armsr/armv8/diy/diy.sh
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-    - name: Fix libnftnl version
-      run: |
-        cd openwrt
-        # 备份旧版本
-        mv package/libs/libnftnl package/libs/libnftnl.bak
-        # 下载新版本（示例）
-        git clone https://github.com/openwrt/packages.git temp-packages
-        cp -r temp-packages/libs/libnftnl package/libs/
-        rm -rf temp-packages
-
+   
     - name: Load N1 custom config
       run: |
         rm -rf openwrt/files openwrt/.config
